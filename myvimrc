@@ -1,0 +1,26 @@
+" Plugins.
+" These use vim-plug from junegunn @ github.com
+call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdtree'
+Plug 'jota-de/demon-vim'
+call plug#end()
+
+" Text settings.
+syntax on       " Syntax colouring on
+set nowrap      " Do not wrap lines
+set number      " Show line numbers
+set mouse=a     " Habilitate mouse for all modes
+set tabstop=4   " One tab = 4 spaces
+set shiftwidth=4
+set expandtab   " Tabs -> spaces
+set smartindent " Follow previous indentation
+set autoindent
+
+" Simple status line.
+set laststatus=2                    " Show status line always (2)
+set statusline=                     " Empty status line
+set statusline+=%3*[%n]             " Buffer number
+set statusline+=%1*\ %-.32t\ %3*%=  " Trail of file name (32 characters max)
+set statusline+=[%Y%H%M%R%W]\ %*    " File type and flags
+set statusline+=%1*%4p%%\ %*        " Percentage
+set statusline+=%2*%9(%l:%c%)\ %*   " Line and column
