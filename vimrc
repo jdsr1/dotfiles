@@ -1,5 +1,5 @@
-" Dotfile:     .vimrc
-" Last Change: 2021 May 01
+" Dotfile:     vimrc
+" Last Change: 2023 Apr 15
 
 " Plugins. From junegunn/vim-plug @ github.com
 " ----------------------------------------------------------------------
@@ -9,10 +9,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'jota-de/demon-vim'
 
 " Syntastic
-"Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " LaTex, Python and V language support
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 "Plug 'davidhalter/jedi-vim'
 "Plug 'ollykel/v-vim'
 
@@ -37,7 +37,7 @@ set shiftwidth=4
 set expandtab                               " Tabs -> spaces
 set smartindent                             " Keep previous indentation
 set autoindent
-set textwidth=72
+set textwidth=80
 
 
 " Search
@@ -58,10 +58,14 @@ set statusline+=%1*%4p%%\ %*               " Percentage
 set statusline+=%2*%9(%l:%c%)\ %*          " Line and column
 
 " Need to set colors
-colorscheme morning
+"colorscheme evening
 hi User1 cterm=bold ctermbg=DarkBlue ctermfg=white
 hi User2 cterm=bold ctermbg=DarkCyan ctermfg=white
 hi User3 cterm=bold ctermbg=DarkGray ctermfg=white
+" for the gui version of vim
+hi User1 gui=bold guibg=DarkBlue guifg=white
+hi User2 gui=bold guibg=DarkCyan guifg=white
+hi User3 gui=bold guibg=DarkGray guifg=white
 
 
 " Configuration for vimtex. Mainly taken from castel.dev
