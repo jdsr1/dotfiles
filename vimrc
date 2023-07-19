@@ -1,29 +1,25 @@
 " Dotfile:     vimrc
-" Last Change: 2023 Apr 15
+" Last Change: 2023 Jul 19
 
 " Plugins. From junegunn/vim-plug @ github.com
 " ----------------------------------------------------------------------
-call plug#begin('~/.vim/plugged')
-
-" deMon *.inp & *.new files hi
-Plug 'jota-de/demon-vim'
+"call plug#begin('~/.vim/plugged')
 
 " Syntastic
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
-" LaTex, Python and V language support
+" LaTex and Python support
 "Plug 'lervag/vimtex'
 "Plug 'davidhalter/jedi-vim'
-"Plug 'ollykel/v-vim'
 
 " Files and file search
-Plug 'preservim/nerdtree'
-Plug 'kien/ctrlp.vim'
+"Plug 'preservim/nerdtree'
+"Plug 'kien/ctrlp.vim'
 
 " Snippets
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
-call plug#end()
+"call plug#end()
 
 
 " Text settings.
