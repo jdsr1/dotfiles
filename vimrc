@@ -1,16 +1,29 @@
 " Dotfile:     vimrc
+<<<<<<< HEAD
 " Last Change: 2023 Jul 19
 
 " Plugins. From junegunn/vim-plug @ github.com
 " ----------------------------------------------------------------------
 "call plug#begin('~/.vim/plugged')
+=======
+" Last Change: 2024 Apr 10
+
+" Plugins. From junegunn/vim-plug @ github.com
+" ----------------------------------------------------------------------
+call plug#begin('~/.vim/plugged')
+>>>>>>> 6b3445e (vimrc and README files updated.)
 
 " Syntastic
 "Plug 'vim-syntastic/syntastic'
 
 " LaTex and Python support
+<<<<<<< HEAD
 "Plug 'lervag/vimtex'
 "Plug 'davidhalter/jedi-vim'
+=======
+Plug 'lervag/vimtex'
+Plug 'davidhalter/jedi-vim'
+>>>>>>> 6b3445e (vimrc and README files updated.)
 
 " Files and file search
 "Plug 'preservim/nerdtree'
@@ -54,7 +67,7 @@ set statusline+=%1*%4p%%\ %*               " Percentage
 set statusline+=%2*%9(%l:%c%)\ %*          " Line and column
 
 " Need to set colors
-"colorscheme evening
+"colorscheme delek
 hi User1 cterm=bold ctermbg=DarkBlue ctermfg=white
 hi User2 cterm=bold ctermbg=DarkCyan ctermfg=white
 hi User3 cterm=bold ctermbg=DarkGray ctermfg=white
@@ -66,9 +79,9 @@ hi User3 gui=bold guibg=DarkGray guifg=white
 
 " Configuration for vimtex. Mainly taken from castel.dev
 " ----------------------------------------------------------------------
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
+let g:tex_flavor='pdflatex'
+"let g:vimtex_view_method='zathura'
+"let g:vimtex_quickfix_mode=0
 "set conceallevel=2
 "let g:tex_conceal='abdmg'
 
@@ -89,13 +102,32 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 " ----------------------------------------------------------------------
 " Mapleader & mappings
 let mapleader='-'
+let maplocalleader=']'
+
 nnoremap <leader>ev :split $MYVIMRC <cr>   " edit vimrc file
 nnoremap <leader>sv :source $MYVIMRC <cr>  " source vimrc
-nnoremap <leader>w :tabnext <cr>
-nnoremap <leader>a :tabprevious <cr>
-nnoremap <leader>xx :py3file % <cr>        " run current python script
+nnoremap <leader>ul o# <esc>78a-<esc>      " underline current line
 
-let maplocalleader=']'
+" Writing and moving
+nnoremap zq :q!<cr>
+nnoremap zw :wq!<cr>
+nnoremap zj <c-d>
+nnoremap zk <c-u>
+onoremap p i(
+
+" Don't use arrow keys!
+nnoremap <up> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <down> <nop>
+
+" Abbreviations
+iabbrev stpy #!/usr/bin/python<cr>#!encoding:utf-8<cr><cr><cr>
+iabbrev stsh #!/bin/bash<cr><cr>##     Purpose:<cr>## Last change:<cr><cr>
 
 " Remember me, vim
 if has("autocmd")
