@@ -1,38 +1,25 @@
 " Dotfile:     vimrc
-<<<<<<< HEAD
-" Last Change: 2023 Jul 19
-
-" Plugins. From junegunn/vim-plug @ github.com
-" ----------------------------------------------------------------------
-"call plug#begin('~/.vim/plugged')
-=======
 " Last Change: 2024 Apr 10
 
 " Plugins. From junegunn/vim-plug @ github.com
 " ----------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
->>>>>>> 6b3445e (vimrc and README files updated.)
 
 " Syntastic
-"Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " LaTex and Python support
-<<<<<<< HEAD
-"Plug 'lervag/vimtex'
-"Plug 'davidhalter/jedi-vim'
-=======
 Plug 'lervag/vimtex'
 Plug 'davidhalter/jedi-vim'
->>>>>>> 6b3445e (vimrc and README files updated.)
 
 " Files and file search
-"Plug 'preservim/nerdtree'
-"Plug 'kien/ctrlp.vim'
+Plug 'preservim/nerdtree'
+Plug 'kien/ctrlp.vim'
 
 " Snippets
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
-"call plug#end()
+call plug#end()
 
 
 " Text settings.
