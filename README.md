@@ -9,3 +9,7 @@ My dotfiles.
 * `i3status.conf` i3wm status configuration. Taken from the Fedora i3
   spin default configuration file. Just minor changes and UTF characters
   added.
+
+* `tmux.conf` tmux configuration file. Taken from hashrocket/dotmatrix @
+  github.com
+
