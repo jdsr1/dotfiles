@@ -13,3 +13,5 @@ My dotfiles.
 * `tmux.conf` tmux configuration file. Taken from hashrocket/dotmatrix @
   github.com
 
+* `gdbinit` GNU debugger configuration file.
+
