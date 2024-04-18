@@ -126,9 +126,9 @@ endif
 set backspace=2
 
 
-" Colorscheme for vimdiff
+" vimdiff configuration
 if &diff
-    colorscheme blue
+    syntax off
 endif
 
 " Termdebug
