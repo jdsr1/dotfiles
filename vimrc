@@ -1,5 +1,6 @@
 " Dotfile:     vimrc
-" Last Change: 2024 Apr 10
+" Last Change: 2024.04.18
+
 
 " Plugins. From junegunn/vim-plug @ github.com
 " ----------------------------------------------------------------------
@@ -91,9 +92,14 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 let mapleader='-'
 let maplocalleader=']'
 
-nnoremap <leader>ev :split $MYVIMRC <cr>   " edit vimrc file
-nnoremap <leader>sv :source $MYVIMRC <cr>  " source vimrc
-nnoremap <leader>ul o# <esc>78a-<esc>      " underline current line
+" -- edit vimrc file
+nnoremap <leader>ev :split $MYVIMRC <cr>
+" -- source vimrc file
+nnoremap <leader>sv :source $MYVIMRC <cr>
+" -- underline current line
+nnoremap <leader>ul o# <esc>78a-<esc>
+" -- temporarily deactive search highlighting
+nnoremap <CR> :nohlsearch<CR><CR>
 
 " Writing and moving
 nnoremap zq :q!<cr>
