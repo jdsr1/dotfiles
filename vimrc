@@ -1,5 +1,5 @@
 " Dotfile:     vimrc
-" Last Change: 2024.04.18
+" Last Change: 2024.05.01
 
 
 " Plugins. From junegunn/vim-plug @ github.com
@@ -68,7 +68,7 @@ hi User3 gui=bold guibg=DarkGray guifg=white
 " Configuration for vimtex. Mainly taken from castel.dev
 " ----------------------------------------------------------------------
 let g:tex_flavor='pdflatex'
-"let g:vimtex_view_method='zathura'
+let g:vimtex_view_method='evince'
 "let g:vimtex_quickfix_mode=0
 "set conceallevel=2
 "let g:tex_conceal='abdmg'
@@ -86,7 +86,7 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 
-" Extra settings.
+" Extra settings. TODO: group autocommands by buffers.
 " ----------------------------------------------------------------------
 " Mapleader & mappings
 let mapleader='-'
@@ -96,10 +96,13 @@ let maplocalleader=']'
 nnoremap <leader>ev :split $MYVIMRC <cr>
 " -- source vimrc file
 nnoremap <leader>sv :source $MYVIMRC <cr>
+
 " -- underline current line
 nnoremap <leader>ul o# <esc>78a-<esc>
 " -- temporarily deactive search highlighting
-nnoremap <CR> :nohlsearch<CR><CR>
+nnoremap <space> :nohlsearch<cr><space>
+" -- adjust paragraph (delimited by % signs for LaTeX)
+nnoremap <leader>ap ?%\\|^$<cr>jVNkgq :nohlsearch<cr>
 
 " Writing and moving
 nnoremap zq :q!<cr>
@@ -118,10 +121,6 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 inoremap <down> <nop>
 
-" Abbreviations
-iabbrev stpy #!/usr/bin/python<cr>#!encoding:utf-8<cr><cr><cr>
-iabbrev stsh #!/bin/bash<cr><cr>##     Purpose:<cr>## Last change:<cr><cr>
-
 " Remember me, vim
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -131,7 +130,6 @@ endif
 " (mandatory for gvim @ windows)
 set backspace=2
 
-
 " vimdiff configuration
 if &diff
     syntax off
@@ -139,3 +137,6 @@ endif
 
 " Termdebug
 let g:termdebug_wide=1
+
+" Temporary settings.
+" ----------------------------------------------------------------------
