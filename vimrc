@@ -1,23 +1,42 @@
 " Dotfile:     vimrc
-" Last Change: 2024.05.01
+" Last Change: 2024.09.08
 
 
-" Plugins. From junegunn/vim-plug @ github.com
+" Plugin manager from junegunn/vim-plug
 " ----------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
-" Syntastic
-Plug 'vim-syntastic/syntastic'
+" Dependencies
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
 
-" LaTex and Python support
-Plug 'lervag/vimtex'
-Plug 'davidhalter/jedi-vim'
+" mini nvim
+Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
+Plug 'echasnovski/mini.icons'
 
 " Files and file search
-Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
 
-" Snippets
+" LaTeX support
+Plug 'lervag/vimtex'
+
+" Autocomplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" Color schemes
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'folke/tokyonight.nvim'
+
+" Python snippets
 Plug 'SirVer/ultisnips'
 
 call plug#end()
@@ -25,23 +44,23 @@ call plug#end()
 
 " Text settings.
 " ----------------------------------------------------------------------
-syntax on                                   " Syntax colouring on
-set nowrap                                  " Do not wrap lines
-set number                                  " Show line numbers
-set mouse=a                                 " Toggle mouse for all modes
-set tabstop=4                               " One tab = 4 spaces
-set shiftwidth=4                            
-set expandtab                               " Tabs -> spaces
-set smartindent                             " Keep previous indentation
+syntax on                                  " Syntax colouring on
+set nowrap                                 " Do not wrap lines
+set number                                 " Show line numbers
+set mouse=ni                               " Toggle mouse for ni modes
+set tabstop=4                              " One tab = 4 spaces
+set shiftwidth=4                           
+set expandtab                              " Tabs -> spaces
+set smartindent                            " Keep previous indentation
 set autoindent
 set textwidth=80
 
 
-" Search
+" Search.
 " ----------------------------------------------------------------------
-set hlsearch                                " highlight search matches
+set hlsearch                               " Highlight search matches
 set ignorecase
-set incsearch                               " match while typing
+set incsearch                              " Match while typing
 
 
 " Simple status line.
@@ -54,73 +73,67 @@ set statusline+=[%Y%H%M%R%W]\ %*           " File type and flags
 set statusline+=%1*%4p%%\ %*               " Percentage
 set statusline+=%2*%9(%l:%c%)\ %*          " Line and column
 
-" Need to set colors
-"colorscheme delek
+
+" Color settings.
+" ----------------------------------------------------------------------
+colorscheme tokyonight-night
+
 hi User1 cterm=bold ctermbg=DarkBlue ctermfg=white
 hi User2 cterm=bold ctermbg=DarkCyan ctermfg=white
 hi User3 cterm=bold ctermbg=DarkGray ctermfg=white
-" for the gui version of vim
+
 hi User1 gui=bold guibg=DarkBlue guifg=white
 hi User2 gui=bold guibg=DarkCyan guifg=white
 hi User3 gui=bold guibg=DarkGray guifg=white
 
 
-" Configuration for vimtex. Mainly taken from castel.dev
+" Configuration for VimTeX. Originally taken from castel.dev.
 " ----------------------------------------------------------------------
-let g:tex_flavor='pdflatex'
-let g:vimtex_view_method='evince'
-"let g:vimtex_quickfix_mode=0
-"set conceallevel=2
-"let g:tex_conceal='abdmg'
+let g:tex_flavor               = 'pdflatex'
+let g:vimtex_view_method       = 'zathura'
+let g:vimtex_indent_enabled    = 0
+let g:vimtex_compiler_progname = 'nvr'
 
 
-" Configuration for CtrlP
+" Configuration for CtrlP.
 " ----------------------------------------------------------------------
 let g:ctrlp_by_filename=1
 
 
-" Configuration of ultisnips
+" Configuration of ultisnips.
 " ----------------------------------------------------------------------
 let g:UltiSnipsEditSplit='horizontal'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 
-" Extra settings. TODO: group autocommands by buffers.
+" Mapleader and mappings.
+" TODO: group autocommands by buffers.
 " ----------------------------------------------------------------------
-" Mapleader & mappings
 let mapleader='-'
 let maplocalleader=']'
 
-" -- edit vimrc file
+" Edit and source vimrc file
 nnoremap <leader>ev :split $MYVIMRC <cr>
-" -- source vimrc file
 nnoremap <leader>sv :source $MYVIMRC <cr>
-
-" -- underline current line
-nnoremap <leader>ul o# <esc>78a-<esc>
-" -- temporarily deactive search highlighting
-nnoremap <space> :nohlsearch<cr><space>
-" -- adjust paragraph (delimited by % signs for LaTeX)
-nnoremap <leader>ap ?%\\|^$<cr>jVNkgq :nohlsearch<cr>
 
 " Writing and moving
 nnoremap zq :q!<cr>
 nnoremap zw :wq!<cr>
 nnoremap zj <c-d>
 nnoremap zk <c-u>
+
 onoremap p i(
 
-" Don't use arrow keys!
-nnoremap <up> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-nnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-inoremap <down> <nop>
+" LaTeX specific
+nnoremap <leader>ap ?%\\|^$<cr>jVNkgq :nohlsearch<cr>:w<cr>
 
+" Miscellaneous
+nnoremap <space> :nohlsearch<cr><space>
+
+
+" Other settings.
+" ----------------------------------------------------------------------
 " Remember me, vim
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -137,6 +150,7 @@ endif
 
 " Termdebug
 let g:termdebug_wide=1
+
 
 " Temporary settings.
 " ----------------------------------------------------------------------

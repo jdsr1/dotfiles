@@ -1,0 +1,7 @@
+# Dotfile:     zathurarc
+# Last Change: 2024.09.08
+
+
+# Interface with vim/VimTeX
+set synctex true
+set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
