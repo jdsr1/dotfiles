@@ -1,7 +1,21 @@
 # Dotfile:     zathurarc
-# Last Change: 2024.09.08
+# Last Change: 2024.09.19
 
 
 # Interface with vim/VimTeX
 set synctex true
 set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
+
+# status bar
+set statusbar-bg "#666666"
+
+# colors
+set highlight-color "#00cccc"
+set highlight-active-color "#00cccc"
+set highlight-transparency 0.3
+set recolor-darkcolor "#eeeeee"
+set recolor-lightcolor "#333333"
+
+# other
+set window-title-home-tilde "true"
+set statusbar-home-tilde "true"
